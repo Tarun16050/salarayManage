@@ -1,0 +1,425 @@
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+body {
+  font-family: "Poppins", sans-serif;
+}
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+}
+.navbar {
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  perspective: 1500px;
+}
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #122448;
+  color: #000;
+  transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
+  transform-origin: bottom left;
+  .sidebar-header {
+    padding: 20px;
+  }
+  ul.components {
+    padding: 20px 20px 0 20px;
+    margin: 0;
+  }
+
+    .list-unstyled.components li a {
+      font-size: 19px;
+        margin-bottom: 26px;
+        margin-top: 28px;
+    }
+    .list-unstyled.components li {
+      border-bottom: 1px solid #2b2b2b;
+  }
+
+  ul {
+    p {
+      font-weight: 400;
+      font-size: 0.75rem;
+      line-height: 1.5rem;
+      letter-spacing: normal;
+      letter-spacing: -0.02em;
+      color: #9ca8ba;
+      margin: 0;
+    }
+    li {
+      a {
+        display: flex;
+        font-size: 0.75rem;
+        line-height: 1.5rem;
+        letter-spacing: normal;
+        padding-top: 4px;
+        padding-top: 0.25rem;
+        padding-right: 5px;
+        padding-right: 0.3125rem;
+        padding-bottom: 4px;
+        padding-bottom: 0.25rem;
+        padding-left: 5px;
+        padding-left: 0.3125rem;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        margin-bottom: 5px;
+        margin-bottom: 0.3125rem;
+        position: relative;
+        &:hover {
+          background: #fff;
+          color: #000;
+        }
+        &:after {
+          transform: translateY(-50%) rotate(-90deg);
+        }
+      }
+    }
+    li.active {
+      > a {
+        background: #fff;
+        color: #000;
+      }
+    }
+  }
+}
+#sidebar.active {
+  margin-left: -250px;
+  transform: rotateY(100deg);
+}
+.dropdown-toggle {
+  padding-right: 15px;
+}
+a[aria-expanded="true"] {
+  background: #fff;
+  color: #000;
+  &:after {
+    transform: translateY(-50%) rotate(0deg) !important;
+  }
+}
+a[data-toggle="collapse"] {
+  position: relative;
+}
+.dropdown-toggle {
+  &::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+  }
+}
+
+ul.CTAs {
+  padding: 20px;
+  a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+}
+a.download {
+  background: #fff;
+  color: #7386d5;
+}
+a.article {
+  background: #6d7fcc !important;
+  color: #fff !important;
+  &:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+  }
+}
+#content {
+  width: 100%;
+  padding: 0;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+#sidebarCollapse {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  cursor: pointer;
+  span {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    transition: all 0.8s cubic-bezier(0.81, -0.33, 0.345, 1.375);
+    transition-delay: 0.2s;
+    &:first-of-type {
+      transform: rotate(45deg) translate(2px, 2px);
+    }
+    &:nth-of-type(2) {
+      opacity: 0;
+    }
+    &:last-of-type {
+      transform: rotate(-45deg) translate(1px, -1px);
+    }
+  }
+}
+#sidebarCollapse.active {
+  span {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+  }
+}
+#sidebarCollapselogout {
+  width: 40px;
+  height: 40px;
+  background: #011e85;
+  border-radius: 10px;
+  border: 3px solid gray;
+  color: white;
+ 
+  cursor: pointer;
+  a {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    margin-bottom: 13px;
+    display: block;
+    /* background: #555; */
+    transition: all 0.8s cubic-bezier(0.81, -0.33, 0.345, 1.375);    
+    transition-delay: 0.2s;
+  }
+}
+#sidebarCollapselogout:hover{
+  transform: scale(1.05);
+  background: #0037ff;
+}
+#sidebarCollapselogout.active {
+  a {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+  }
+}
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+    transform: rotateY(90deg);
+  }
+  #sidebar.active {
+    margin-left: 0;
+    transform: none;
+  }
+  #sidebarCollapse {
+    span {
+      &:first-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+      }
+      &:nth-of-type(2) {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+      }
+      &:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+      }
+    }
+  }
+  #sidebarCollapse.active {
+    span {
+      margin: 0 auto;
+      &:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+      }
+    }
+  }
+}
+header {
+  .dropdown {
+    .dropdown-toggle {
+      &::after {
+        right: 0;
+      }
+    }
+  }
+}
+.onhover-dropdown {
+  &:hover {
+    .onhover-show-div {
+      opacity: 1;
+      -webkit-transform: translateY(0px);
+      transform: translateY(0px);
+      visibility: visible;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+  }
+  .onhover-show-div {
+    -webkit-box-shadow: 0 0 20px rgba(89, 102, 122, 0.1);
+    box-shadow: 0 0 20pxrgba (89, 102, 122, 0.1);
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+    opacity: 0;
+    visibility: hidden;
+    left: 0;
+    display: block;
+    transition: all linear 0.3s;
+  }
+}
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 320px;
+  height: 100%;
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+  padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog {
+  left: -320px;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.show .modal-dialog {
+  left: 0;
+}
+
+/*Right*/
+.modal.right.fade .modal-dialog {
+  right: -320px;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.show .modal-dialog {
+  right: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header {
+  border-bottom-color: #eeeeee;
+  background-color: #fafafa;
+}
+
+/* ----- v CAN BE DELETED v ----- */
+
+.demo {
+  padding-top: 60px;
+  padding-bottom: 110px;
+}
+
+.btn-demo {
+  margin: 15px;
+  padding: 10px 15px;
+  border-radius: 0;
+  font-size: 16px;
+}
+
+.btn-demo:focus {
+  outline: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 767px) {
+  .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
+      float: unset;
+  }
+}

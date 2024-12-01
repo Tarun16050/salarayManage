@@ -1,0 +1,45 @@
+.chapchacss{
+    height: 46px;
+    width: 200px;
+    border: none;
+    border-radius: 50px;
+}
+.capcha ,.capcha_border {
+    display: flex;
+    align-items: center;
+  }
+  .capcha .chapchacss {
+    margin-left: 10px; /* Adjust spacing between input and button */
+  }
+  .capcha input[type="text"] {
+    width: 150px; /* Adjust width as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+  }
+  .capcha button {
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .capcha button img {
+    width: 24px; 
+    height: 24px;
+  }
+  
+  .capcha button:hover {
+    opacity: 0.8;
+  }
+  .capcha_border{
+    
+    background-color: none;
+  }
+  .randomvalue{
+  color: #FFFF;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 25px;
+  font-style: italic;
+  }

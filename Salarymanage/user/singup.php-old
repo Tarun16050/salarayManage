@@ -1,0 +1,154 @@
+<?php require_once dirname(__FILE__).'/database.php'; ?> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/user/css/login.css">   
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>User Registration</title>
+  </head>
+  <body>
+    <div class="login_form">
+      <form action="singup.php" class="form"  method="post" enctype="multipart/form-data" id="admin_form">
+        <h1 class="form_title"> User Registration </h1>
+        <div class="form_div">
+          <input type="text" placeholder=""  name="fname" id="first_name" class="form_input">
+          <label class="form_label">First Name</label>
+          <p id="errors_first_name" class="field_erros"></p>
+        </div>
+        <div class="form_div">
+          <input type="text" placeholder=""  name="lname" id="last_name" class="form_input">
+          <label class="form_label">Last Name</label>
+          <p id="errors_last_name" class="field_erros"></p>
+        </div>
+        <div class="form_div">
+          <input type="text" placeholder="" class="form_input"  name="email" id="email">
+          <label class="form_label">Email</label>
+          <p id="errors_email" class="field_erros"><?= isset($error['email']) ? $error['email'] : ''; ?></p> 
+        </div>
+        <div class="form_div">
+          <input type="tel" placeholder=""  name="mobile" id="phone" class="form_input">
+          <label class="form_label">Phone Number</label>
+          <p id="errors_phone" class="field_erros"></p> 
+        </div>
+        <div class="form_div">
+          <input type="password" placeholder=""  name="psw" id="password" class="form_input">
+          <label class="form_label">Password</label>
+          <p id="errors_password" class="field_erros"></p> 
+        </div>
+        <div class="form_div">
+          <input type="password" placeholder=""  name="cpsw" id="confirm_Password" class="form_input">
+          <label class="form_label">Confirm Password</label>
+          <p id="errors_confirm_password" class="field_erros"></p> 
+        </div>
+        <input type="submit" class="form_button_singup" value="Sign Up"  name="submit">
+        <p>Have an account? <a href="index.php"><span style="color: blue;">Log in</span></a></p>
+        </form>
+    </div>
+  </body>
+</html>
+<!-- <script src="/user/js/signup.js"></script> -->
+ <script>
+    
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('admin_form');
+    
+    form.addEventListener('submit', function (event) {
+        let valid = true;
+
+        const errors = {
+            firstName: document.getElementById('errors_first_name'),
+            lastName: document.getElementById('errors_last_name'),
+            email: document.getElementById('errors_email'),
+            phone: document.getElementById('errors_phone'),
+            password: document.getElementById('errors_password'),
+            confirmPassword: document.getElementById('errors_confirm_password')
+        };
+
+        // Clear previous errors
+        Object.values(errors).forEach(error => error.textContent = '');
+
+        // Simple Validation Checks
+        const firstName = document.getElementById('first_name').value.trim();
+        if (!firstName) {
+            errors.firstName.textContent = 'First Name is required.';
+            valid = false;
+        }
+
+        const lastName = document.getElementById('last_name').value.trim();
+        if (!lastName) {
+            errors.lastName.textContent = 'Last Name is required.';
+            valid = false;
+        }
+
+        const email = document.getElementById('email').value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailPattern.test(email)) {
+            errors.email.textContent = 'A valid email is required.';
+            valid = false;
+        }
+
+        const phone = document.getElementById('phone').value.trim();
+        if (!phone) {
+            errors.phone.textContent = 'Phone Number is required.';
+            valid = false;
+        }
+
+        const password = document.getElementById('password').value.trim();
+        if (!password) {
+            errors.password.textContent = 'Password is required.';
+            valid = false;
+        }
+
+        const confirmPassword = document.getElementById('confirm_password').value.trim();
+        if (password !== confirmPassword) {
+            errors.confirmPassword.textContent = 'Passwords do not match.';
+            valid = false;
+        }
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+});
+
+ </script>
+<?php 
+session_start();
+if(isset($_REQUEST['submit'])){ 
+    $email = isset($_REQUEST['email']) ? stripslashes($_REQUEST['email']) : '' ;   
+    if(!empty($email)){ $email = mysqli_real_escape_string($con, $email); }
+    $password = isset($_REQUEST['password']) ? stripslashes($_REQUEST['password']) : '' ;
+    if(!empty($password)){ $password = mysqli_real_escape_string($con, $password); $password = md5($password); }
+    $chapchaValue = isset($_REQUEST['chapchaValue']) ? stripslashes($_REQUEST['chapchaValue']) : 0 ;
+    $query = "SELECT * FROM `registration_user` WHERE `email`='$email'AND `password`='$password' " ;
+    $result = mysqli_query($con, $query) ;
+    $rows = mysqli_num_rows($result);
+    if ($rows == 1 ) {
+    $fetch_data = mysqli_fetch_assoc($result);
+    $_SESSION['loginData'] = $fetch_data;
+        if($chapchaValue == 1 ){		
+        header("Location: /user/dashboard.php");}
+        else{
+            ?>
+            <script>				
+                const errorMessageElement1 = document.getElementById("error_login_massage");
+                if (errorMessageElement1) {			
+                    errorMessageElement1.textContent = "Invalid Captcha";
+                } 				
+            </script>
+            <?php 
+        }
+    }
+    else {?>
+        <script>				
+            const errorMessageElement = document.getElementById("error_login_massage");
+            if (errorMessageElement) {			
+                errorMessageElement.textContent = "Invalid user / password";
+            } 				
+        </script>
+        <?php 
+      }
+} 
+?>

@@ -1,0 +1,53 @@
+/* .image_showing_list{
+    border : 2px solid black;
+    padding: 5px;
+} */
+.image_showing_list {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.div_img{
+margin-top: 10px;
+margin-left: 100px;
+}
+
+.edituserprofile{
+    color: aliceblue;
+  }
+  .Profilelink{
+    margin-right:30px ;
+  }
+  .logoutlink{
+    margin-left:30px ;
+  }
+/* Add Notes and Listing of notes */
+.addnotes{
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: 20px;
+}
+.listnotes{
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: 10px;
+  background-color: #a6c5946b;
+}
+.iconsectionnotes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px; 
+}
+.date-text {
+  margin-left: auto;
+  text-align: right;
+}
+.note-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+/* END  Add Notes and Listing of notes */

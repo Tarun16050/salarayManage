@@ -1,0 +1,41 @@
+/* image showing in list popup in registration user file */
+.image_showing_list{
+    border : 2px solid black;
+    padding: 5px;
+}
+.div_img{
+margin-top: 10px;
+margin-left: 100px;
+}
+/* end image showing in list popup in registration user file */
+
+
+/* Add Notes and Listing of notes */
+.addnotes{
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 1%;
+    margin-bottom: 20px;
+  }
+  .listnotes{
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 1%;
+    margin-bottom: 10px;
+    background-color: #a6c5946b;
+  }
+  .iconsectionnotes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3px; 
+  }
+  .date-text {
+    margin-left: auto;
+    text-align: right;
+}
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  /* END  Add Notes and Listing of notes */
